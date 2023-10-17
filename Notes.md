@@ -47,3 +47,15 @@ DONE 1.0s
 DONE 1.2s
 
 ```
+
+```
+===== Application Startup at 2023-10-16 02:46:33 =====
+
+Fetching model from: https://huggingface.co/Open-Orca/Mistral-7B-OpenOrca
+/home/user/app/app.py:3: GradioDeprecationWarning: gr.Interface.load() will be deprecated. Use gr.load() instead.
+  gr.Interface.load("models/Open-Orca/Mistral-7B-OpenOrca").launch()
+Running on local URL:  http://0.0.0.0:7860
+
+To create a public link, set `share=True` in `launch()`.
+
+```
