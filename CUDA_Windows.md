@@ -9,7 +9,7 @@ Check whether CUDA Toolkit is already installed. In this example, CUDA Toolkit i
 INFO: Could not find files for the given pattern(s).
 
 C:\Users\jquisenberry>nvcc --version
-'nvccx' is not recognized as an internal or external command,
+'nvcc' is not recognized as an internal or external command,
 operable program or batch file.
 
 ```
