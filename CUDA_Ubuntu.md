@@ -33,6 +33,10 @@ $ sudo lshw -class display
 
 # Check Communication with Nvidia Driver
 
+```
+$ nvidia-smi
+```
+
 ## Error: Driver Mismatch
 
 This error may indicate that components of two different versions are installed.
@@ -50,13 +54,17 @@ NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Ma
 
 ## Solution
 
-The solution to both issues is to install the correct Nvidia driver.
+The solution to both errors is to install the correct NVIDIA driver.
 
-# Remove Nvidia Packages
+# Install NVIDIA Drivers
 
+## Remove Nvidia Packages
 
+```
+sudo apt autoremove nvidia* --purge
+```
 
-# List Available Nvidia Drivers
+## List Available Nvidia Drivers
 
 ```
 $ sudo ubuntu-drivers devices
@@ -80,13 +88,11 @@ modalias : pci:v000015ADd00000405sv000015ADsd00000405bc03sc00i00
 vendor   : VMware
 model    : SVGA II Adapter
 driver   : open-vm-tools-desktop - distro free
-
 ```
 
-# Install a Driver
+## Install a Driver
 
-To use the latest version of CUDA, it may be necessary to install the latest Nvidia driver. The highest-version driver in the above list is `nvidia-driver-535`.
-
+The highest available version of the CUDA Toolkit depends on the version of the NVIDIA driver. In tests, `nvidia-driver-535` was not compatible with CUDA Toolkit. I tried the next highest version `nvidia-driver-525`
 
 ```
 $ sudo apt install nvidia-driver-525
@@ -111,52 +117,29 @@ The following NEW packages will be installed:
 Need to get 329 MB/330 MB of archives.
 After this operation, 677 MB of additional disk space will be used.
 Do you want to continue? [Y/n] y
-
-
-
 ```
 
-
-
-
-
-
-
-## To Install a Specific Driver
-
-```
-$ sudo apt install nvidia-driver-535
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-The following NEW packages will be installed:
-  libnvidia-cfg1-535 libnvidia-common-535 libnvidia-compute-535 libnvidia-decode-535 libnvidia-encode-535 libnvidia-extra-535 libnvidia-fbc1-535 libnvidia-gl-535 nvidia-compute-utils-535 nvidia-dkms-535
-  nvidia-driver-535 nvidia-kernel-common-535 nvidia-kernel-source-535 nvidia-utils-535 xserver-xorg-video-nvidia-535
-0 upgraded, 15 newly installed, 17 to remove and 0 not upgraded.
-Need to get 307 MB of archives.
-After this operation, 203 MB of additional disk space will be used.
-Do you want to continue? [Y/n] y
-```
-
-```
-$sudo reboot
-```
-
-## To Install the Recommended Driver
-
-Installing the recommended driver may preclude the use of the latest version of CUDA.
+### Install "Recommended Driver"
+This command installs the driver marked as "recommended". It may not be the latest compatible version.
 
 ```
 $ sudo ubuntu-drivers autoinstall
 ```
 
+## Reboot
+Reboot the machine after installing the NVIDIA drivers and before installing CUDA Toolkit.
+
 ```
 $sudo reboot
 ```
 
-# Check Communication with Nvidia Driver
+# Check Communication with the NVIDIA Driver
 
-This utility reports driver version 525.* and CUDA version 12.0. It reports the correct GPU model and that 40 GB of GPU memory are found.
+This utility reports these metrics, among others: 
+* Driver version: 525.* 
+* CUDA version: 12.0.
+* GPU Model:  NVIDIA A100-PCI
+* GPU Memory: 40 GB
 
 ```
 $ nvidia-smi
@@ -180,8 +163,6 @@ Tue Oct 24 22:36:59 2023
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
-
-
 ```
 
 # Check for Installed CUDA Toolkit
@@ -195,7 +176,6 @@ $ nvcc --version
 Command 'nvcc' not found, but can be installed with:
 apt install nvidia-cuda-toolkit
 Please ask your administrator.
-
 ```
 
 # Install CUDA Toolkit
@@ -238,7 +218,12 @@ Do you want to continue? [Y/n] y
 
 ```
 
-# Detect CUDA Version
+# Report CUDA Toolkit Version
+
+```
+$ which nvcc
+/usr/bin/nvcc
+```
 
 ```
 $ nvcc --version
@@ -249,16 +234,10 @@ Cuda compilation tools, release 11.5, V11.5.119
 Build cuda_11.5.r11.5/compiler.30672275_0
 ```
 
-```
-$ which nvcc
-/usr/bin/nvcc
-```
-
-
-
 # Links
 
-https://varhowto.com/check-cuda-version/
+* https://varhowto.com/check-cuda-version/
+* https://gist.github.com/denguir/b21aa66ae7fb1089655dd9de8351a202
 
 
 
