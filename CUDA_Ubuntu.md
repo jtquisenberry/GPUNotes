@@ -5,9 +5,9 @@
 Check whether CUDA Toolkit is already installed. In this example, CUDA Toolkit is not already installed.
 
 ```
-$which nvcc
+$ which nvcc
 
-$nvcc --version
+$ nvcc --version
 Command 'nvcc' not found, but can be installed with:
 apt install nvidia-cuda-toolkit
 Please ask your administrator.
@@ -109,43 +109,14 @@ Build cuda_11.5.r11.5/compiler.30672275_0
 ```
 
 ```
->where nvcc
-C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\bin\nvcc.exe
-
->nvcc --version
-nvcc: NVIDIA (R) Cuda compiler driver
-Copyright (c) 2005-2023 NVIDIA Corporation
-Built on Tue_Aug_15_22:09:35_Pacific_Daylight_Time_2023
-Cuda compilation tools, release 12.2, V12.2.140
-Build cuda_12.2.r12.2/compiler.33191640_0
+$ which nvcc
+/usr/bin/nvcc
 ```
 
 ```
->nvidia-smi
-Wed Oct 18 21:28:37 2023
-+---------------------------------------------------------------------------------------+
-| NVIDIA-SMI 537.13                 Driver Version: 537.13       CUDA Version: 12.2     |
-|-----------------------------------------+----------------------+----------------------+
-| GPU  Name                     TCC/WDDM  | Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
-|                                         |                      |               MIG M. |
-|=========================================+======================+======================|
-|   0  NVIDIA GeForce RTX 3060      WDDM  | 00000000:01:00.0 Off |                  N/A |
-| 36%   32C    P8               5W / 170W |    399MiB / 12288MiB |      4%      Default |
-|                                         |                      |                  N/A |
-+-----------------------------------------+----------------------+----------------------+
+$ nvidia-smi
+NVIDIA-SMI has failed because it couldn't communicate with the NVIDIA driver. Make sure that the latest NVIDIA driver is installed and running.
 
-+---------------------------------------------------------------------------------------+
-| Processes:                                                                            |
-|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
-|        ID   ID                                                             Usage      |
-|=======================================================================================|
-|    0   N/A  N/A      7564    C+G   ...oogle\Chrome\Application\chrome.exe    N/A      |
-|    0   N/A  N/A      9760    C+G   ...e Stream\82.0.1.0\GoogleDriveFS.exe    N/A      |
-|    0   N/A  N/A     12636    C+G   C:\Windows\explorer.exe                   N/A      |
-|    0   N/A  N/A     24280    C+G   ...GeForce Experience\NVIDIA Share.exe    N/A      |
-|    0   N/A  N/A     27972    C+G   ...1.0_x64__8wekyb3d8bbwe\Video.UI.exe    N/A      |
-+---------------------------------------------------------------------------------------+
 ```
 
 # Links
