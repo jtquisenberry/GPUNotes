@@ -1,5 +1,36 @@
 # CUDA in Ubuntu 22.04 LTS
 
+# Check GPU
+
+```
+$ sudo lshw -class display
+  *-display                 
+       description: VGA compatible controller
+       product: SVGA II Adapter
+       vendor: VMware
+       physical id: f
+       bus info: pci@0000:00:0f.0
+       logical name: /dev/fb0
+       version: 00
+       width: 32 bits
+       clock: 33MHz
+       capabilities: vga_controller bus_master cap_list rom fb
+       configuration: depth=32 driver=vmwgfx latency=64 resolution=1176,885
+       resources: irq:16 ioport:2040(size=16) memory:e8000000-efffffff memory:f9000000-f97fffff memory:c0000-dffff
+  *-display UNCLAIMED
+       description: 3D controller
+       product: GA100 [A100 PCIe 40GB]
+       vendor: NVIDIA Corporation
+       physical id: 0
+       bus info: pci@0000:13:00.0
+       version: a1
+       width: 64 bits
+       clock: 33MHz
+       capabilities: pm cap_list
+       configuration: latency=64
+       resources: iomemory:1fe00-1fdff iomemory:1ff00-1feff memory:fb000000-fbffffff memory:1fe000000000-1fefffffffff memory:1ff000000000-1ff001ffffff
+```
+
 # Check for Installed CUDA
 
 Check whether CUDA Toolkit is already installed. In this example, CUDA Toolkit is not already installed.
