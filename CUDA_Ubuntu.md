@@ -48,6 +48,10 @@ Please ask your administrator.
 # Install CUDA Toolkit
 
 ```
+sudo apt update && sudo apt upgrade
+```
+
+```
 $ sudo apt install nvidia-cuda-toolkit
 Reading package lists... Done
 Building dependency tree... Done
