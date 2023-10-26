@@ -103,6 +103,28 @@ $ echo $LD_LIBRARY_PATH
 /usr/local/cuda-12.3/lib64
 ```
 
+## With `sudo byobu`
+
+Running `byobu` as root typically resets environment variables, including `$PATH`. Add the directory to what the path is reset to.
+
+```
+$ sudo visudo
+```
+
+Edit the file by updating this:
+```
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+```
+to this
+```
+Defaults        secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/local/cuda-12.3/bin"
+```
+
+__Save__
+
+__Reboot__
+
+
 
 # Check CUDA Toolkit
 
