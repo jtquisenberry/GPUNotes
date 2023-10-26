@@ -82,6 +82,11 @@ LD_LIBRARY_PATH="/usr/local/cuda-12.3/lib64"
 
 Save
 
+Source
+```
+# source /etc/environment
+```
+
 Reboot
 ```
 sudo reboot
