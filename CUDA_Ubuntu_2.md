@@ -33,7 +33,7 @@ $ export LD_LIBRARY_PATH=/usr/local/cuda-12.3/lib64\
                          ${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 ```
 
-## Permanently
+## Current User Permanently
 
 ```
 $ nano ~/.bashrc
@@ -57,6 +57,44 @@ $ echo $PATH
 $ echo $LD_LIBRARY_PATH
 /usr/local/cuda-12.3/lib64
 ```
+
+## All Users Permanently
+
+See https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix
+
+```
+$ sudo nano /etc/environment
+```
+Edit the environment variables to include these lines:
+
+```
+PATH="<original value>:/usr/local/cuda-12.3/bin"
+LD_LIBRARY_PATH="/usr/local/cuda-12.3/lib64"
+
+
+```
+Example:
+
+```
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/cuda-12.3/bin"
+LD_LIBRARY_PATH="/usr/local/cuda-12.3/lib64"
+```
+
+Save
+
+Reboot
+```
+sudo reboot
+```
+Check Paths
+```
+$ echo $PATH
+/usr/local/cuda-12.3/bin:...
+$ echo $LD_LIBRARY_PATH
+/usr/local/cuda-12.3/lib64
+```
+
+
 # Check CUDA Toolkit
 
 ```
