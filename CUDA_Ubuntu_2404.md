@@ -69,26 +69,66 @@ sudo apt autoremove nvidia* --purge
 
 ```
 $ sudo ubuntu-drivers devices
-ERROR:root:aplay command not found
-== /sys/devices/pci0000:00/0000:00:17.0/0000:13:00.0 ==
-modalias : pci:v000010DEd000020F1sv000010DEsd0000145Fbc03sc02i00
-vendor   : NVIDIA Corporation
-model    : GA100 [A100 PCIe 40GB]
-driver   : nvidia-driver-535-server - distro non-free
-driver   : nvidia-driver-450-server - distro non-free
-driver   : nvidia-driver-470 - distro non-free recommended
-driver   : nvidia-driver-525-open - distro non-free
-driver   : nvidia-driver-525-server - distro non-free
-driver   : nvidia-driver-535-server-open - distro non-free
-driver   : nvidia-driver-535-open - distro non-free
-driver   : nvidia-driver-470-server - distro non-free
-driver   : xserver-xorg-video-nouveau - distro free builtin
-
 == /sys/devices/pci0000:00/0000:00:0f.0 ==
 modalias : pci:v000015ADd00000405sv000015ADsd00000405bc03sc00i00
 vendor   : VMware
 model    : SVGA II Adapter
+manual_install: True
 driver   : open-vm-tools-desktop - distro free
+
+== /sys/devices/pci0000:00/0000:00:11.0/0000:02:01.0 ==
+modalias : pci:v000010DEd00001BB4sv000010DEsd000011FDbc03sc00i00
+vendor   : NVIDIA Corporation
+model    : GP104GL [Tesla P6]
+manual_install: True
+driver   : nvidia-driver-535-server - distro non-free
+driver   : nvidia-driver-555 - third-party non-free
+driver   : nvidia-driver-560 - third-party non-free recommended
+driver   : nvidia-driver-470-server - distro non-free
+driver   : nvidia-driver-535 - distro non-free
+driver   : nvidia-driver-550 - third-party non-free
+driver   : nvidia-driver-390 - third-party non-free
+driver   : nvidia-driver-545 - third-party non-free
+driver   : nvidia-driver-470 - distro non-free
+driver   : xserver-xorg-video-nouveau - distro free builtin
+```
+
+## Another Way to List Drivers
+
+```
+~$ apt list nvidia-driver*
+Listing... Done
+nvidia-driver-390/noble 390.157-0ubuntu7 amd64
+nvidia-driver-460-server/noble-updates,noble-security 470.256.02-0ubuntu0.24.04.1 amd64
+nvidia-driver-460/noble-updates,noble-security 470.256.02-0ubuntu0.24.04.1 amd64
+nvidia-driver-465/noble-updates,noble-security 470.256.02-0ubuntu0.24.04.1 amd64
+nvidia-driver-470-server/noble-updates,noble-security 470.256.02-0ubuntu0.24.04.1 amd64
+nvidia-driver-470/noble-updates,noble-security 470.256.02-0ubuntu0.24.04.1 amd64
+nvidia-driver-510/noble 525.147.05-0ubuntu2 amd64
+nvidia-driver-515-open/noble 525.147.05-0ubuntu2 amd64
+nvidia-driver-515-server/noble 525.147.05-0ubuntu2 amd64
+nvidia-driver-515/noble 525.147.05-0ubuntu2 amd64
+nvidia-driver-520-open/noble 525.147.05-0ubuntu2 amd64
+nvidia-driver-520/noble 525.147.05-0ubuntu2 amd64
+nvidia-driver-525-open/noble 525.147.05-0ubuntu2 amd64
+nvidia-driver-525-server/noble 525.147.05-0ubuntu2 amd64
+nvidia-driver-525/noble 525.147.05-0ubuntu2 amd64
+nvidia-driver-530-open/noble-updates,noble-security 535.183.01-0ubuntu0.24.04.1 amd64
+nvidia-driver-530/noble-updates,noble-security 535.183.01-0ubuntu0.24.04.1 amd64
+nvidia-driver-535-open/noble-updates,noble-security 535.183.01-0ubuntu0.24.04.1 amd64
+nvidia-driver-535-server-open/noble-updates,noble-security 535.216.01-0ubuntu0.24.04.1 amd64
+nvidia-driver-535-server/noble-updates,noble-security 535.216.01-0ubuntu0.24.04.1 amd64
+nvidia-driver-535/noble-updates,noble-security 535.183.01-0ubuntu0.24.04.1 amd64
+nvidia-driver-545-open/noble 545.29.06-0ubuntu0~gpu24.04.1 amd64
+nvidia-driver-545/noble 545.29.06-0ubuntu0~gpu24.04.1 amd64
+nvidia-driver-550-open/noble 550.127.05-0ubuntu0~gpu24.04.1 amd64
+nvidia-driver-550-server-open/noble-updates,noble-security 550.127.05-0ubuntu0.24.04.1 amd64
+nvidia-driver-550-server/noble-updates,noble-security 550.127.05-0ubuntu0.24.04.1 amd64
+nvidia-driver-550/noble 550.127.05-0ubuntu0~gpu24.04.1 amd64
+nvidia-driver-555-open/noble 555.58.02-0ubuntu0~gpu24.04.1 amd64
+nvidia-driver-555/noble 555.58.02-0ubuntu0~gpu24.04.1 amd64
+nvidia-driver-560-open/noble 560.35.03-0ubuntu0~gpu24.04.4 amd64
+nvidia-driver-560/noble 560.35.03-0ubuntu0~gpu24.04.4 amd64
 ```
 
 ## Install a Driver
@@ -144,26 +184,26 @@ This utility reports these metrics, among others:
 
 ```
 $ nvidia-smi
-Tue Oct 24 22:36:59 2023       
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 525.125.06   Driver Version: 525.125.06   CUDA Version: 12.0     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  NVIDIA A100-PCI...  On   | 00000000:13:00.0 Off |                  Off |
-| N/A   34C    P0    34W / 250W |      0MiB / 40960MiB |      0%      Default |
-|                               |                      |             Disabled |
-+-------------------------------+----------------------+----------------------+
-                                                                               
-+-----------------------------------------------------------------------------+
-| Processes:                                                                  |
-|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-|        ID   ID                                                   Usage      |
-|=============================================================================|
-|  No running processes found                                                 |
-+-----------------------------------------------------------------------------+
+Tue Nov 26 17:47:30 2024
++---------------------------------------------------------------------------------------+
+| NVIDIA-SMI 535.183.06             Driver Version: 535.183.06   CUDA Version: 12.2     |
+|-----------------------------------------+----------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |         Memory-Usage | GPU-Util  Compute M. |
+|                                         |                      |               MIG M. |
+|=========================================+======================+======================|
+|   0  GRID P6-16Q                    On  | 00000000:02:01.0 Off |                    0 |
+| N/A   N/A    P8              N/A /  N/A |      0MiB / 16384MiB |      0%      Default |
+|                                         |                      |             Disabled |
++-----------------------------------------+----------------------+----------------------+
+
++---------------------------------------------------------------------------------------+
+| Processes:                                                                            |
+|  GPU   GI   CI        PID   Type   Process name                            GPU Memory |
+|        ID   ID                                                             Usage      |
+|=======================================================================================|
+|  No running processes found                                                           |
++---------------------------------------------------------------------------------------+
 ```
 
 # Check for Installed CUDA Toolkit
@@ -191,32 +231,42 @@ Reading package lists... Done
 Building dependency tree... Done
 Reading state information... Done
 The following additional packages will be installed:
-  ca-certificates-java fonts-dejavu-extra java-common javascript-common libaccinj64-11.5 libatk-wrapper-java libatk-wrapper-java-jni libbabeltrace1 libboost-regex1.74.0 libcub-dev libcublas11 libcublaslt11
-  libcudart11.0 libcufft10 libcufftw10 libcuinj64-11.5 libcupti-dev libcupti-doc libcupti11.5 libcurand10 libcusolver11 libcusolvermg11 libcusparse11 libdebuginfod-common libdebuginfod1 libegl-dev
-  libgail-common libgail18 libgif7 libgl-dev libgl1-mesa-dev libgles-dev libgles1 libglvnd-core-dev libglvnd-dev libglx-dev libgtk2.0-0 libgtk2.0-bin libgtk2.0-common libipt2 libjs-jquery libnppc11 libnppial11
-  libnppicc11 libnppidei11 libnppif11 libnppig11 libnppim11 libnppist11 libnppisu11 libnppitc11 libnpps11 libnvblas11 libnvidia-compute-495 libnvidia-compute-510 libnvidia-ml-dev libnvjpeg11
-  libnvrtc-builtins11.5 libnvrtc11.2 libnvtoolsext1 libnvvm4 libopengl-dev libpcsclite1 libpthread-stubs0-dev libsource-highlight-common libsource-highlight4v5 libtbb-dev libtbb12 libtbbmalloc2 libthrust-dev
-  libvdpau-dev libx11-dev libxau-dev libxcb1-dev libxdmcp-dev node-html5shiv nvidia-cuda-dev nvidia-cuda-gdb nvidia-cuda-toolkit-doc nvidia-opencl-dev nvidia-profiler nvidia-visual-profiler ocl-icd-libopencl1
-  ocl-icd-opencl-dev opencl-c-headers opencl-clhpp-headers openjdk-8-jre openjdk-8-jre-headless x11proto-dev xorg-sgml-doctools xtrans-dev
+  adwaita-icon-theme alsa-topology-conf alsa-ucm-conf at-spi2-common at-spi2-core ca-certificates-java cpp-12 dconf-gsettings-backend dconf-service fontconfig fonts-dejavu-extra g++-12 gcc-12 gcc-12-base gsettings-desktop-schemas
+  gtk-update-icon-cache hicolor-icon-theme humanity-icon-theme java-common javascript-common libaccinj64-12.0 libamd-comgr2 libamdhip64-5 libasound2-data libasound2t64 libasyncns0 libatk-bridge2.0-0t64 libatk-wrapper-java
+  libatk-wrapper-java-jni libatk1.0-0t64 libatspi2.0-0t64 libbabeltrace1 libcairo-gobject2 libcairo2 libcu++-dev libcub-dev libcublas12 libcublaslt12 libcudart12 libcufft11 libcufftw11 libcuinj64-12.0 libcupti-dev libcupti-doc
+  libcupti12 libcurand10 libcusolver11 libcusolvermg11 libcusparse12 libdatrie1 libdconf1 libdebuginfod-common libdebuginfod1t64 libflac12t64 libgail-common libgail18t64 libgcc-12-dev libgdk-pixbuf-2.0-0 libgdk-pixbuf2.0-bin
+  libgdk-pixbuf2.0-common libgif7 libgraphite2-3 libgtk2.0-0t64 libgtk2.0-bin libgtk2.0-common libharfbuzz0b libhsa-runtime64-1 libhsakmt1 libhwloc-plugins libhwloc15 libibumad3 libice6 libipt2 libjpeg62 libjs-jquery liblcms2-2
+  libmp3lame0 libmpg123-0t64 libnppc12 libnppial12 libnppicc12 libnppidei12 libnppif12 libnppig12 libnppim12 libnppist12 libnppisu12 libnppitc12 libnpps12 libnvblas12 libnvidia-compute-535 libnvidia-ml-dev libnvjitlink12 libnvjpeg12
+  libnvrtc-builtins12.0 libnvrtc12 libnvtoolsext1 libnvvm4 libogg0 libopus0 libpango-1.0-0 libpangocairo-1.0-0 libpangoft2-1.0-0 libpcsclite1 libpfm4 libpixman-1-0 libpulse0 librdmacm1t64 librsvg2-2 librsvg2-common libsm6 libsndfile1
+  libsource-highlight-common libsource-highlight4t64 libstdc++-12-dev libtbb-dev libtbb12 libtbbbind-2-5 libtbbmalloc2 libthai-data libthai0 libthrust-dev libucx0 libvdpau-dev libvdpau1 libvorbis0a libvorbisenc2 libwayland-cursor0
+  libwayland-egl1 libxaw7 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-render0 libxcb-shape0 libxcb-util1 libxcb-xkb1 libxcomposite1 libxcursor1 libxdamage1 libxft2 libxi6 libxinerama1 libxkbcommon-x11-0
+  libxkbfile1 libxmu6 libxnvctrl0 libxrandr2 libxrender1 libxt6t64 libxtst6 libxv1 libxxf86dga1 mesa-vdpau-drivers node-html5shiv nsight-compute nsight-compute-target nsight-systems nsight-systems-target nvidia-cuda-dev nvidia-cuda-gdb
+  nvidia-cuda-toolkit-doc nvidia-opencl-dev nvidia-profiler nvidia-visual-profiler ocl-icd-libopencl1 ocl-icd-opencl-dev opencl-c-headers opencl-clhpp-headers openjdk-8-jre openjdk-8-jre-headless session-migration ubuntu-mono
+  vdpau-driver-all x11-common x11-utils
 Suggested packages:
-  default-jre apache2 | lighttpd | httpd pcscd libtbb-doc libvdpau-doc libx11-doc libxcb-doc nodejs opencl-clhpp-headers-doc fonts-nanum fonts-ipafont-gothic fonts-ipafont-mincho fonts-wqy-microhei
-  fonts-wqy-zenhei fonts-indic
+  gcc-12-locales cpp-12-doc g++-12-multilib gcc-12-doc gcc-12-multilib default-jre apache2 | lighttpd | httpd alsa-utils libasound2-plugins gvfs libhwloc-contrib-plugins liblcms2-utils opus-tools pcscd pulseaudio librsvg2-bin
+  libstdc++-12-doc libtbb-doc libvdpau-doc nodejs nvidia-cuda-samples opencl-clhpp-headers-doc libnss-mdns fonts-nanum fonts-ipafont-gothic fonts-ipafont-mincho fonts-wqy-microhei fonts-wqy-zenhei fonts-indic libvdpau-va-gl1 mesa-utils
 Recommended packages:
-  libnvcuvid1 nsight-compute nsight-systems
+  libnvcuvid1 luit
+The following packages will be REMOVED:
+  nvidia-linux-grid-535
 The following NEW packages will be installed:
-  ca-certificates-java fonts-dejavu-extra java-common javascript-common libaccinj64-11.5 libatk-wrapper-java libatk-wrapper-java-jni libbabeltrace1 libboost-regex1.74.0 libcub-dev libcublas11 libcublaslt11
-  libcudart11.0 libcufft10 libcufftw10 libcuinj64-11.5 libcupti-dev libcupti-doc libcupti11.5 libcurand10 libcusolver11 libcusolvermg11 libcusparse11 libdebuginfod-common libdebuginfod1 libegl-dev
-  libgail-common libgail18 libgif7 libgl-dev libgl1-mesa-dev libgles-dev libgles1 libglvnd-core-dev libglvnd-dev libglx-dev libgtk2.0-0 libgtk2.0-bin libgtk2.0-common libipt2 libjs-jquery libnppc11 libnppial11
-  libnppicc11 libnppidei11 libnppif11 libnppig11 libnppim11 libnppist11 libnppisu11 libnppitc11 libnpps11 libnvblas11 libnvidia-compute-495 libnvidia-compute-510 libnvidia-ml-dev libnvjpeg11
-  libnvrtc-builtins11.5 libnvrtc11.2 libnvtoolsext1 libnvvm4 libopengl-dev libpcsclite1 libpthread-stubs0-dev libsource-highlight-common libsource-highlight4v5 libtbb-dev libtbb12 libtbbmalloc2 libthrust-dev
-  libvdpau-dev libx11-dev libxau-dev libxcb1-dev libxdmcp-dev node-html5shiv nvidia-cuda-dev nvidia-cuda-gdb nvidia-cuda-toolkit nvidia-cuda-toolkit-doc nvidia-opencl-dev nvidia-profiler nvidia-visual-profiler
-  ocl-icd-libopencl1 ocl-icd-opencl-dev opencl-c-headers opencl-clhpp-headers openjdk-8-jre openjdk-8-jre-headless x11proto-dev xorg-sgml-doctools xtrans-dev
-0 upgraded, 92 newly installed, 0 to remove and 0 not upgraded.
-Need to get 1,505 MB of archives.
-After this operation, 4,066 MB of additional disk space will be used.
+  adwaita-icon-theme alsa-topology-conf alsa-ucm-conf at-spi2-common at-spi2-core ca-certificates-java cpp-12 dconf-gsettings-backend dconf-service fontconfig fonts-dejavu-extra g++-12 gcc-12 gcc-12-base gsettings-desktop-schemas
+  gtk-update-icon-cache hicolor-icon-theme humanity-icon-theme java-common javascript-common libaccinj64-12.0 libamd-comgr2 libamdhip64-5 libasound2-data libasound2t64 libasyncns0 libatk-bridge2.0-0t64 libatk-wrapper-java
+  libatk-wrapper-java-jni libatk1.0-0t64 libatspi2.0-0t64 libbabeltrace1 libcairo-gobject2 libcairo2 libcu++-dev libcub-dev libcublas12 libcublaslt12 libcudart12 libcufft11 libcufftw11 libcuinj64-12.0 libcupti-dev libcupti-doc
+  libcupti12 libcurand10 libcusolver11 libcusolvermg11 libcusparse12 libdatrie1 libdconf1 libdebuginfod-common libdebuginfod1t64 libflac12t64 libgail-common libgail18t64 libgcc-12-dev libgdk-pixbuf-2.0-0 libgdk-pixbuf2.0-bin
+  libgdk-pixbuf2.0-common libgif7 libgraphite2-3 libgtk2.0-0t64 libgtk2.0-bin libgtk2.0-common libharfbuzz0b libhsa-runtime64-1 libhsakmt1 libhwloc-plugins libhwloc15 libibumad3 libice6 libipt2 libjpeg62 libjs-jquery liblcms2-2
+  libmp3lame0 libmpg123-0t64 libnppc12 libnppial12 libnppicc12 libnppidei12 libnppif12 libnppig12 libnppim12 libnppist12 libnppisu12 libnppitc12 libnpps12 libnvblas12 libnvidia-compute-535 libnvidia-ml-dev libnvjitlink12 libnvjpeg12
+  libnvrtc-builtins12.0 libnvrtc12 libnvtoolsext1 libnvvm4 libogg0 libopus0 libpango-1.0-0 libpangocairo-1.0-0 libpangoft2-1.0-0 libpcsclite1 libpfm4 libpixman-1-0 libpulse0 librdmacm1t64 librsvg2-2 librsvg2-common libsm6 libsndfile1
+  libsource-highlight-common libsource-highlight4t64 libstdc++-12-dev libtbb-dev libtbb12 libtbbbind-2-5 libtbbmalloc2 libthai-data libthai0 libthrust-dev libucx0 libvdpau-dev libvdpau1 libvorbis0a libvorbisenc2 libwayland-cursor0
+  libwayland-egl1 libxaw7 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-render0 libxcb-shape0 libxcb-util1 libxcb-xkb1 libxcomposite1 libxcursor1 libxdamage1 libxft2 libxi6 libxinerama1 libxkbcommon-x11-0
+  libxkbfile1 libxmu6 libxnvctrl0 libxrandr2 libxrender1 libxt6t64 libxtst6 libxv1 libxxf86dga1 mesa-vdpau-drivers node-html5shiv nsight-compute nsight-compute-target nsight-systems nsight-systems-target nvidia-cuda-dev nvidia-cuda-gdb
+  nvidia-cuda-toolkit nvidia-cuda-toolkit-doc nvidia-opencl-dev nvidia-profiler nvidia-visual-profiler ocl-icd-libopencl1 ocl-icd-opencl-dev opencl-c-headers opencl-clhpp-headers openjdk-8-jre openjdk-8-jre-headless session-migration
+  ubuntu-mono vdpau-driver-all x11-common x11-utils
+0 upgraded, 178 newly installed, 1 to remove and 3 not upgraded.
+Need to get 2,317 MB of archives.
+After this operation, 7,149 MB of additional disk space will be used.
 Do you want to continue? [Y/n] y
-
-
 ```
 
 # Report CUDA Toolkit Version
