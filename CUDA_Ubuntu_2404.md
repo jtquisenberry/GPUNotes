@@ -279,10 +279,10 @@ $ which nvcc
 ```
 $ nvcc --version
 nvcc: NVIDIA (R) Cuda compiler driver
-Copyright (c) 2005-2021 NVIDIA Corporation
-Built on Thu_Nov_18_09:45:30_PST_2021
-Cuda compilation tools, release 11.5, V11.5.119
-Build cuda_11.5.r11.5/compiler.30672275_0
+Copyright (c) 2005-2023 NVIDIA Corporation
+Built on Fri_Jan__6_16:45:21_PST_2023
+Cuda compilation tools, release 12.0, V12.0.140
+Build cuda_12.0.r12.0/compiler.32267302_0
 ```
 
 # Links
