@@ -177,10 +177,10 @@ $sudo reboot
 # Check Communication with the NVIDIA Driver
 
 This utility reports these metrics, among others: 
-* Driver version: 525.* 
-* CUDA version: 12.0.
-* GPU Model:  NVIDIA A100-PCI
-* GPU Memory: 40 GB
+* Driver version: 535.* 
+* CUDA version: 12.2.
+* GPU Model:  GRID P6-16Q
+* GPU Memory: 16 GB
 
 ```
 $ nvidia-smi
